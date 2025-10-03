@@ -7,9 +7,9 @@ instances = Dict()
 route("/simulations", method = POST) do
     payload = jsonpayload()
     x, y = payload["dim"]
-    #y = payload["dim"][2]
+    density = haskey(payload, "density") ? payload["density"] : 0.4
 
-    model = forest_fire(griddims=(x,y))
+    model = forest_fire(density = density, griddims = (x, y))
 
     id = string(uuid1())
     instances[id] = model

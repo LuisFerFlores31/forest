@@ -8,6 +8,7 @@ function App() {
   let [trees, setTrees] = useState([]);
   let [gridSize, setGridSize] = useState(20);
   let [simSpeed, setSimSpeed] = useState(1);
+  let [density, setDensity] = useState(0.4);
   const running = useRef(null);
 
   let setup = () => {
@@ -15,7 +16,7 @@ function App() {
     fetch("http://localhost:8000/simulations", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ dim: [gridSize, gridSize] })
+      body: JSON.stringify({ dim: [gridSize, gridSize], density: density })
     }).then(resp => resp.json())
     .then(data => {
       console.log(data);
@@ -70,6 +71,7 @@ function App() {
         </Button>
         <SliderField label="Grid size" min={10} max={40} step={10} type='number' value={gridSize} onChange={setGridSize}/>
         <SliderField label="Simulation speed" min={1} max={10} step={1} type='number' value={simSpeed} onChange={setSimSpeed}/>
+        <SliderField label="Density" min={0.1} max={1.0} step={0.1} type='number' value={density} onChange={setDensity}/>
       </div>
       <svg width="500" height="500" xmlns="http://www.w3.org/2000/svg" style={{backgroundColor:"white"}}>
       {
