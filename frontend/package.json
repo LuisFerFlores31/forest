@@ -12,8 +12,10 @@
   "dependencies": {
     "@aws-amplify/ui-react": "^6.13.0",
     "aws-amplify": "^6.15.7",
+    "plotly.js": "^3.1.1",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-plotly.js": "^2.6.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
